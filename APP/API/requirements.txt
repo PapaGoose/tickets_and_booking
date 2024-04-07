@@ -1,0 +1,16 @@
+packaging
+python-dotenv
+sentencepiece
+protobuf
+numpy
+ninja
+pymysql
+fastapi
+transformers
+peft
+bitsandbytes>=0.41.3
+vllm
+uvicorn
+scipy
+yake
+pymystem3

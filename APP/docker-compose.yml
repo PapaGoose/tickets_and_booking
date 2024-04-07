@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  backend:
+    image: test_api
+    ports:
+      - "${BACKEND_PORT}:8000"
+    build:
+      context: ./API
+      dockerfile: Dockerfile
+    restart: on-failure
+    volumes:
+      - ./models:/usr/src/app/models
+      - .env:/usr/src/app/.env:ro
+    container_name: test_api
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["0", "1"]
+              capabilities: [gpu]
+  frontend:
+    image: test_frontend
+    ports:
+      - "${FRONTEND_PORT}:8501"
+    build:
+      context: ./Streamlit
+      dockerfile: Dockerfile
+    restart: on-failure
+    volumes:
+      - .env:/usr/src/app/.env:ro
+    container_name: test_frontend

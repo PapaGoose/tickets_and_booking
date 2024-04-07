@@ -1,0 +1,6 @@
+numpy
+streamlit
+pymysql
+scipy
+pandas
+python-dotenv

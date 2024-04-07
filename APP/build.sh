@@ -1,0 +1,1 @@
+docker build -t test-base-build:latest -f API/Dockerfile-base ./API
